@@ -10,4 +10,11 @@ resource "aws_instance" "hello-world" {
   tags = {
     Name = "Hello World"
   }
+
+  #ec2インスタンスにnginxをインストールさせる
+  user_data = <<EOF
+#!/bin/bash
+amazon-linux-extras install -y nginx1.12
+systemctl start nginx
+EOF
 }
