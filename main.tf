@@ -6,4 +6,8 @@ provider "aws" {
 resource "aws_instance" "hello-world" {
   ami           = "ami-02892a4ea9bfa2192" # amiはamazon machine imageの略
   instance_type = "t2.micro"
+
+  tags = {
+    Name = "Hello World"
+  }
 }
