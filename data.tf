@@ -7,15 +7,15 @@ data "aws_ami" "name" {
   owners      = ["self", "amazon"]
 
   filter {
-    name  = "name"
-    value = ["amzn2-ami-hvm-2.0.*-x86_64-gp2"]
+    name   = "name"
+    values = ["amzn2-ami-hvm-2.0.*-x86_64-gp2"]
   }
   filter {
-    name  = "root-device-type"
-    value = ["ebs"]
+    name   = "root-device-type"
+    values = ["ebs"]
   }
   filter {
-    name  = "virtualization-type"
-    value = ["hvm"]
+    name   = "virtualization-type"
+    values = ["hvm"]
   }
 }
