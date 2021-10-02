@@ -60,6 +60,8 @@ resource "aws_db_instance" "mysql_standalone" {
   # パスワードには上で作成したrandom文字列を設定
   password = random_string.db_password.result
 
+  instance_class = "db.t2.micro"
+
   #storage setting
   allocated_storage     = 20
   max_allocated_storage = 30
@@ -78,6 +80,21 @@ resource "aws_db_instance" "mysql_standalone" {
   parameter_group_name = aws_db_parameter_group.mysql_standalone_parametergroup.name
   option_group_name    = aws_db_option_group.mysql_standalone_optiongroup.name
 
+  #maintenance setting
+  backup_window              = "04:00-05:00"
+  backup_retention_period    = 7 #何日分保存するか
+  maintenance_window         = "Mon:05:00-Mon:08:00"
+  auto_minor_version_upgrade = false
 
+  #deletion setting
+  deletion_protection = true
+  skip_final_snapshot = false
 
+  apply_immediately = true
+
+  tags = {
+    "Name"  = "${var.project}-${var.enviroment}-mysql-standalone"
+    Project = var.project
+    Env     = var.enviroment
+  }
 }
