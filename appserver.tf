@@ -35,3 +35,13 @@ resource "aws_instance" "app_server" {
     Type    = "app"
   }
 }
+
+# aws_instanceの取り込み方法 (cmd:terraform import aws_instance.test [id])
+#もしtfstateをs3保存している場合にはterraform importの結果はs3へ反映される。
+#ローカルでも合わせたい場合にはterraform state show hoge をして中身を確認してローカルに反映させる必要あり
+#ちゃんとローカルとs3のtfstateに違いがないか確認するにはterraform planを叩いてno changeと出ればおk
+resource "aws_instance" "test" {
+  ami           = "ami-02892a4ea9bfa2192"
+  instance_type = "t2.micro"
+
+}
