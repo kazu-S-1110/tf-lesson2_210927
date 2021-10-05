@@ -41,3 +41,5 @@ terraform.rc
 src/tastylog-dev-keypair.pub
 .gitignore
 src/tastylog-dev-keypair.pem
+src/tastylog-app-1.8.1.tar.gz
+src/tastylog-mw-all-1.0.0.tar.gz
