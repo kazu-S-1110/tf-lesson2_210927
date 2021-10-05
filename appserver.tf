@@ -47,3 +47,33 @@ resource "aws_instance" "app_server" {
 #   instance_type = "t2.micro"
 # }
 # 管理対象外にするならterraform state rm aws_instance.test
+
+
+# -----------------------------------
+# Parameter Store 
+# -----------------------------------
+resource "aws_ssm_parameter" "host" {
+  name  = "/${var.project}/${var.enviroment}/app/MYSQL_HOST"
+  type  = "String"
+  value = aws_db_instance.mysql_standalone.address
+}
+resource "aws_ssm_parameter" "port" {
+  name  = "/${var.project}/${var.enviroment}/app/MYSQL_PORT"
+  type  = "String"
+  value = aws_db_instance.mysql_standalone.port
+}
+resource "aws_ssm_parameter" "database" {
+  name  = "/${var.project}/${var.enviroment}/app/MYSQL_DATABASE"
+  type  = "String"
+  value = aws_db_instance.mysql_standalone.name
+}
+resource "aws_ssm_parameter" "username" {
+  name  = "/${var.project}/${var.enviroment}/app/MYSQL_USERNAME"
+  type  = "SecureString"
+  value = aws_db_instance.mysql_standalone.username
+}
+resource "aws_ssm_parameter" "password" {
+  name  = "/${var.project}/${var.enviroment}/app/MYSQL_PASSWORD"
+  type  = "SecureString"
+  value = aws_db_instance.mysql_standalone.password
+}
