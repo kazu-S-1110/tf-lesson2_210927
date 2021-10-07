@@ -25,3 +25,7 @@ variable "project" {
 variable "enviroment" {
   type = string
 }
+
+variable "domain" {
+  type = string
+}
