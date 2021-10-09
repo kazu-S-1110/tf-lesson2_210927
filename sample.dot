@@ -54,7 +54,7 @@ digraph {
 		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
 		"[root] provider[\"registry.terraform.io/hashicorp/random\"]" [label = "provider[\"registry.terraform.io/hashicorp/random\"]", shape = "diamond"]
 		"[root] random_string.db_password (expand)" [label = "random_string.db_password", shape = "box"]
-		"[root] var.enviroment" [label = "var.enviroment", shape = "note"]
+		"[root] var.environment" [label = "var.environment", shape = "note"]
 		"[root] var.project" [label = "var.project", shape = "note"]
 		"[root] aws_db_instance.mysql_standalone (expand)" -> "[root] aws_db_option_group.mysql_standalone_optiongroup (expand)"
 		"[root] aws_db_instance.mysql_standalone (expand)" -> "[root] aws_db_parameter_group.mysql_standalone_parametergroup (expand)"
@@ -62,16 +62,16 @@ digraph {
 		"[root] aws_db_instance.mysql_standalone (expand)" -> "[root] aws_security_group.db_sg (expand)"
 		"[root] aws_db_instance.mysql_standalone (expand)" -> "[root] random_string.db_password (expand)"
 		"[root] aws_db_option_group.mysql_standalone_optiongroup (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
-		"[root] aws_db_option_group.mysql_standalone_optiongroup (expand)" -> "[root] var.enviroment"
+		"[root] aws_db_option_group.mysql_standalone_optiongroup (expand)" -> "[root] var.environment"
 		"[root] aws_db_option_group.mysql_standalone_optiongroup (expand)" -> "[root] var.project"
 		"[root] aws_db_parameter_group.mysql_standalone_parametergroup (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
-		"[root] aws_db_parameter_group.mysql_standalone_parametergroup (expand)" -> "[root] var.enviroment"
+		"[root] aws_db_parameter_group.mysql_standalone_parametergroup (expand)" -> "[root] var.environment"
 		"[root] aws_db_parameter_group.mysql_standalone_parametergroup (expand)" -> "[root] var.project"
 		"[root] aws_db_subnet_group.mysql_standalone_subnetgroup (expand)" -> "[root] aws_subnet.private_subnet_1a (expand)"
 		"[root] aws_db_subnet_group.mysql_standalone_subnetgroup (expand)" -> "[root] aws_subnet.private_subnet_1c (expand)"
 		"[root] aws_iam_instance_profile.app_ec2_profile (expand)" -> "[root] aws_iam_role.app_iam_role (expand)"
 		"[root] aws_iam_role.app_iam_role (expand)" -> "[root] data.aws_iam_policy_document.ec2_assume_role (expand)"
-		"[root] aws_iam_role.app_iam_role (expand)" -> "[root] var.enviroment"
+		"[root] aws_iam_role.app_iam_role (expand)" -> "[root] var.environment"
 		"[root] aws_iam_role.app_iam_role (expand)" -> "[root] var.project"
 		"[root] aws_iam_role_policy_attachment.app_iam_role_ec2_readonly (expand)" -> "[root] aws_iam_role.app_iam_role (expand)"
 		"[root] aws_iam_role_policy_attachment.app_iam_role_s3_readonly (expand)" -> "[root] aws_iam_role.app_iam_role (expand)"
@@ -85,7 +85,7 @@ digraph {
 		"[root] aws_instance.app_server (expand)" -> "[root] data.aws_ami.app (expand)"
 		"[root] aws_internet_gateway.igw (expand)" -> "[root] aws_vpc.vpc (expand)"
 		"[root] aws_key_pair.keypair (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
-		"[root] aws_key_pair.keypair (expand)" -> "[root] var.enviroment"
+		"[root] aws_key_pair.keypair (expand)" -> "[root] var.environment"
 		"[root] aws_key_pair.keypair (expand)" -> "[root] var.project"
 		"[root] aws_route.public_rt_igw_r (expand)" -> "[root] aws_internet_gateway.igw (expand)"
 		"[root] aws_route.public_rt_igw_r (expand)" -> "[root] aws_route_table.public_rt (expand)"
@@ -131,7 +131,7 @@ digraph {
 		"[root] aws_subnet.public_subnet_1a (expand)" -> "[root] aws_vpc.vpc (expand)"
 		"[root] aws_subnet.public_subnet_1c (expand)" -> "[root] aws_vpc.vpc (expand)"
 		"[root] aws_vpc.vpc (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
-		"[root] aws_vpc.vpc (expand)" -> "[root] var.enviroment"
+		"[root] aws_vpc.vpc (expand)" -> "[root] var.environment"
 		"[root] aws_vpc.vpc (expand)" -> "[root] var.project"
 		"[root] data.aws_ami.app (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
 		"[root] data.aws_iam_policy_document.ec2_assume_role (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"

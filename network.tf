@@ -6,9 +6,9 @@ resource "aws_vpc" "vpc" {
   assign_generated_ipv6_cidr_block = false
 
   tags = {
-    Name    = "${var.project}-${var.enviroment}-vpc"
+    Name    = "${var.project}-${var.environment}-vpc"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
   }
 }
 
@@ -19,9 +19,9 @@ resource "aws_subnet" "public_subnet_1a" {
   map_public_ip_on_launch = true //中に作成するEC2に自動でpublic ipを付与する
 
   tags = {
-    "Name"  = "${var.project}-${var.enviroment}-public_subnet_1a"
+    "Name"  = "${var.project}-${var.environment}-public_subnet_1a"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
     Type    = "public"
   }
 }
@@ -32,9 +32,9 @@ resource "aws_subnet" "public_subnet_1c" {
   map_public_ip_on_launch = true //中に作成するEC2に自動でpublic ipを付与する
 
   tags = {
-    "Name"  = "${var.project}-${var.enviroment}-public_subnet_1c"
+    "Name"  = "${var.project}-${var.environment}-public_subnet_1c"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
     Type    = "public"
   }
 }
@@ -45,9 +45,9 @@ resource "aws_subnet" "private_subnet_1a" {
   map_public_ip_on_launch = false //中に作成するEC2に自動でpublic ipを付与する
 
   tags = {
-    "Name"  = "${var.project}-${var.enviroment}-private_subnet_1a"
+    "Name"  = "${var.project}-${var.environment}-private_subnet_1a"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
     Type    = "private"
   }
 }
@@ -58,9 +58,9 @@ resource "aws_subnet" "private_subnet_1c" {
   map_public_ip_on_launch = false //中に作成するEC2に自動でpublic ipを付与する
 
   tags = {
-    "Name"  = "${var.project}-${var.enviroment}-private_subnet_1c"
+    "Name"  = "${var.project}-${var.environment}-private_subnet_1c"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
     Type    = "private"
   }
 }
@@ -71,9 +71,9 @@ resource "aws_subnet" "private_subnet_1c" {
 resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    "Name"  = "${var.project}-${var.enviroment}-public_rt"
+    "Name"  = "${var.project}-${var.environment}-public_rt"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
     Type    = "public"
   }
 }
@@ -89,9 +89,9 @@ resource "aws_route_table_association" "public_rt_1c" {
 resource "aws_route_table" "private_rt" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    "Name"  = "${var.project}-${var.enviroment}-private_rt"
+    "Name"  = "${var.project}-${var.environment}-private_rt"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
     Type    = "private"
   }
 }
@@ -111,9 +111,9 @@ resource "aws_route_table_association" "private_rt_1c" {
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    Name    = "${var.project}-${var.enviroment}-igw"
+    Name    = "${var.project}-${var.environment}-igw"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
   }
 }
 

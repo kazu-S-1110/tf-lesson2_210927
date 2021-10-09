@@ -2,13 +2,13 @@
 # key pair
 # -----------------------------------
 resource "aws_key_pair" "keypair" {
-  key_name   = "${var.project}-${var.enviroment}-keypair"
+  key_name   = "${var.project}-${var.environment}-keypair"
   public_key = file("./src/tastylog-dev-keypair.pub")
 
   tags = {
-    "Name"  = "${var.project}-${var.enviroment}-keypair"
+    "Name"  = "${var.project}-${var.environment}-keypair"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
   }
 }
 
@@ -31,9 +31,9 @@ resource "aws_instance" "app_server" {
   key_name = aws_key_pair.keypair.key_name
 
   tags = {
-    "Name"  = "${var.project}-${var.enviroment}-app-ec2"
+    "Name"  = "${var.project}-${var.environment}-app-ec2"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
     Type    = "app"
   }
 }
@@ -53,27 +53,27 @@ resource "aws_instance" "app_server" {
 # Parameter Store 
 # -----------------------------------
 resource "aws_ssm_parameter" "host" {
-  name  = "/${var.project}/${var.enviroment}/app/MYSQL_HOST"
+  name  = "/${var.project}/${var.environment}/app/MYSQL_HOST"
   type  = "String"
   value = aws_db_instance.mysql_standalone.address
 }
 resource "aws_ssm_parameter" "port" {
-  name  = "/${var.project}/${var.enviroment}/app/MYSQL_PORT"
+  name  = "/${var.project}/${var.environment}/app/MYSQL_PORT"
   type  = "String"
   value = aws_db_instance.mysql_standalone.port
 }
 resource "aws_ssm_parameter" "database" {
-  name  = "/${var.project}/${var.enviroment}/app/MYSQL_DATABASE"
+  name  = "/${var.project}/${var.environment}/app/MYSQL_DATABASE"
   type  = "String"
   value = aws_db_instance.mysql_standalone.name
 }
 resource "aws_ssm_parameter" "username" {
-  name  = "/${var.project}/${var.enviroment}/app/MYSQL_USERNAME"
+  name  = "/${var.project}/${var.environment}/app/MYSQL_USERNAME"
   type  = "SecureString"
   value = aws_db_instance.mysql_standalone.username
 }
 resource "aws_ssm_parameter" "password" {
-  name  = "/${var.project}/${var.enviroment}/app/MYSQL_PASSWORD"
+  name  = "/${var.project}/${var.environment}/app/MYSQL_PASSWORD"
   type  = "SecureString"
   value = aws_db_instance.mysql_standalone.password
 }

@@ -22,7 +22,7 @@ provider "aws" {
 variable "project" {
   type = string
 }
-variable "enviroment" {
+variable "environment" {
   type = string
 }
 

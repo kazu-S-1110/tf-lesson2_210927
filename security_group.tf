@@ -3,14 +3,14 @@
 # -----------------------------------
 # web server group
 resource "aws_security_group" "web_sg" {
-  name        = "${var.project}-${var.enviroment}-web-sg"
+  name        = "${var.project}-${var.environment}-web-sg"
   description = "web front role security group"
   vpc_id      = aws_vpc.vpc.id
 
   tags = {
-    Name    = "${var.project}-${var.enviroment}-web-sg"
+    Name    = "${var.project}-${var.environment}-web-sg"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
   }
 }
 
@@ -42,14 +42,14 @@ resource "aws_security_group_rule" "web_out_tcp3000" {
 
 # ap server group
 resource "aws_security_group" "app_sg" {
-  name        = "${var.project}-${var.enviroment}-app-sg"
+  name        = "${var.project}-${var.environment}-app-sg"
   description = "application server role security group"
   vpc_id      = aws_vpc.vpc.id
 
   tags = {
-    Name    = "${var.project}-${var.enviroment}-app-sg"
+    Name    = "${var.project}-${var.environment}-app-sg"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
   }
 }
 
@@ -90,14 +90,14 @@ resource "aws_security_group_rule" "app_out_tcp3306" {
 
 #opmng security group (運用管理用)
 resource "aws_security_group" "opmng_sg" {
-  name        = "${var.project}-${var.enviroment}-opmng-sg"
+  name        = "${var.project}-${var.environment}-opmng-sg"
   description = "operation and management role security group"
   vpc_id      = aws_vpc.vpc.id
 
   tags = {
-    Name    = "${var.project}-${var.enviroment}-opmng-sg"
+    Name    = "${var.project}-${var.environment}-opmng-sg"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
   }
 }
 
@@ -136,14 +136,14 @@ resource "aws_security_group_rule" "opmng_out_https" {
 
 #db server group
 resource "aws_security_group" "db_sg" {
-  name        = "${var.project}-${var.enviroment}-db-sg"
+  name        = "${var.project}-${var.environment}-db-sg"
   description = "database role security group"
   vpc_id      = aws_vpc.vpc.id
 
   tags = {
-    Name    = "${var.project}-${var.enviroment}-db-sg"
+    Name    = "${var.project}-${var.environment}-db-sg"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
   }
 }
 

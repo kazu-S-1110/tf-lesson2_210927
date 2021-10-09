@@ -1,8 +1,8 @@
 # -----------------------------------
 # ALB  (Application load balancer) (ELB: Elastic load balancer)
 # -----------------------------------
-resource "aws_alb" "alb" {
-  name               = "${var.project}-${var.enviroment}-app-alb"
+resource "aws_lb" "alb" {
+  name               = "${var.project}-${var.environment}-app-alb"
   internal           = false
   load_balancer_type = "application"
   security_groups = [
@@ -15,7 +15,7 @@ resource "aws_alb" "alb" {
 }
 
 resource "aws_lb_listener" "alb_listener_http" {
-  load_balancer_arn = aws_alb.alb.arn
+  load_balancer_arn = aws_lb.alb.arn
   port              = 80
   protocol          = "HTTP"
 
@@ -29,15 +29,15 @@ resource "aws_lb_listener" "alb_listener_http" {
 # target group
 # -----------------------------------
 resource "aws_lb_target_group" "alb_target_group" {
-  name     = "${var.project}-${var.enviroment}-app-tg"
+  name     = "${var.project}-${var.environment}-app-tg"
   port     = 3000
   protocol = "HTTP"
   vpc_id   = aws_vpc.vpc.id
 
   tags = {
-    "Name"  = "${var.project}-${var.enviroment}-app-tg"
+    "Name"  = "${var.project}-${var.environment}-app-tg"
     Project = var.project
-    Env     = var.enviroment
+    Env     = var.environment
   }
 }
 
