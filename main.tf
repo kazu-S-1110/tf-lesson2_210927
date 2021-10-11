@@ -35,3 +35,18 @@ variable "environment" {
 variable "domain" {
   type = string
 }
+
+
+# ---------------------------------------------
+# module demo
+# ---------------------------------------------
+module "webserver" {
+  source        = "./modules/nginx_server"
+  instance_type = "t2.micro"
+}
+
+output "web_server_id" {
+  value = module.webserver.instance_id
+  # Outputs:
+  # web_server_id = "i-07b8e845414db7105"
+}
