@@ -51,3 +51,15 @@ resource "aws_cloudfront_distribution" "cf" {
   }
 }
 
+resource "aws_route53_record" "route53_cloudfront" {
+  zone_id = aws_route53_zone.route53_zone.id
+  name =  "dev.${var.domain}"
+  type = "A"
+
+  alias {
+    name = aws_cloudfront_distribution.cf.domain_name
+    zone_id = aws_cloudfront_distribution.cf.hosted_zone_id
+    evaluate_target_health = true
+  }
+  
+}
